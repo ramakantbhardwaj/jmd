@@ -1,0 +1,1224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/_12sdp"
+    android:layout_margin="@dimen/_3sdp"
+    app:cardElevation="@dimen/_6sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/_2sdp"
+        android:orientation="vertical">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/pdf_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:visibility="gone"
+            android:background="@color/app_main_color_bl">
+           <LinearLayout
+               android:layout_width="@dimen/_120sdp"
+               android:layout_height="@dimen/_25sdp"
+               android:layout_marginStart="@dimen/_16sdp"
+               android:layout_gravity="center_vertical"
+               android:gravity="center_vertical"
+               android:background="@color/black">
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textColor="@color/white"
+                   android:fontFamily="@font/dmsansmed"
+                   android:drawableLeft="@drawable/ic_baseline_file_download_24"
+                   android:text="Download Pdf"/>
+           </LinearLayout>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:fontFamily="@font/dmsansreg"
+                android:padding="@dimen/_2sdp"
+                android:text="VchNo"
+                android:textColor="@color/dark_gray"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_vchNo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:fontFamily="@font/dmsansreg"
+                android:padding="@dimen/_2sdp"
+                android:text=""
+                android:textColor="@color/light_gray"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:fontFamily="@font/dmsansreg"
+                android:gravity="start"
+                android:padding="@dimen/_2sdp"
+                android:text="Issue Date"
+                android:textColor="@color/dark_gray"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_deliveryDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:fontFamily="@font/dmsansreg"
+                android:gravity="start"
+                android:padding="@dimen/_2sdp"
+                android:text=""
+                android:textColor="@color/light_gray"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:fontFamily="@font/dmsansreg"
+                android:padding="@dimen/_2sdp"
+                android:text="VchDate"
+                android:textColor="@color/dark_gray"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_vchDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:fontFamily="@font/dmsansreg"
+                android:padding="@dimen/_2sdp"
+                android:text=""
+                android:textColor="@color/light_gray"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:fontFamily="@font/dmsansreg"
+                android:gravity="start"
+                android:padding="@dimen/_2sdp"
+                android:text="Order No"
+                android:textColor="@color/dark_gray"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_orderNo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:fontFamily="@font/dmsansreg"
+                android:gravity="start"
+                android:padding="@dimen/_2sdp"
+                android:text=""
+                android:textColor="@color/light_gray"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:fontFamily="@font/dmsansreg"
+                android:padding="@dimen/_2sdp"
+                android:text="Customer"
+                android:textColor="@color/dark_gray"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/customerName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:fontFamily="@font/dmsansreg"
+                android:padding="@dimen/_2sdp"
+                android:text=""
+                android:textColor="@color/light_gray"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:fontFamily="@font/dmsansreg"
+                android:padding="@dimen/_2sdp"
+                android:text="Export To"
+                android:textColor="@color/dark_gray"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/issueDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:fontFamily="@font/dmsansreg"
+                android:padding="@dimen/_2sdp"
+                android:text=""
+                android:textColor="@color/light_gray"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:fontFamily="@font/dmsansreg"
+                android:gravity="start"
+                android:padding="@dimen/_2sdp"
+                android:text="Supplier"
+                android:textColor="@color/dark_gray"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_supplier"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="8"
+                android:fontFamily="@font/dmsansreg"
+                android:gravity="start"
+                android:padding="@dimen/_2sdp"
+                android:text=""
+                android:textColor="@color/light_gray"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:fontFamily="@font/dmsansreg"
+                android:padding="@dimen/_2sdp"
+                android:text="Pcs"
+                android:textColor="@color/dark_gray"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_Pcs"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:fontFamily="@font/dmsansreg"
+                android:gravity="start"
+                android:padding="@dimen/_2sdp"
+                android:text=" "
+                android:textColor="@color/light_gray"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.6"
+                android:fontFamily="@font/dmsansreg"
+                android:gravity="start"
+                android:padding="@dimen/_2sdp"
+                android:text="Cases"
+                android:textColor="@color/dark_gray"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_cases"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.6"
+                android:fontFamily="@font/dmsansreg"
+                android:gravity="start"
+                android:padding="@dimen/_2sdp"
+                android:text="Cases"
+                android:textColor="@color/light_gray"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.6"
+                android:fontFamily="@font/dmsansreg"
+                android:gravity="start"
+                android:padding="@dimen/_2sdp"
+                android:text="Total Amt."
+                android:textColor="@color/dark_gray"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_tt_amt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.6"
+                android:fontFamily="@font/dmsansreg"
+                android:gravity="end"
+                android:padding="@dimen/_2sdp"
+                android:text="Total Amt."
+                android:textColor="@color/light_gray"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linear_lay_sub"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!--                 prefix-->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:fontFamily="@font/dmsansreg"
+                    android:padding="@dimen/_2sdp"
+                    android:text="Prefix"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/prefixName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:fontFamily="@font/dmsansreg"
+                    android:gravity="start"
+                    android:padding="@dimen/_2sdp"
+                    android:text=""
+                    android:textColor="@color/light_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnPdfView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/dmsansreg"
+                    android:text="PDF"
+                    android:visibility="gone"
+                    android:background="@drawable/signin_btn"/>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/dmsansreg"
+                    android:padding="@dimen/_2sdp"
+                    android:text="Branch"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/branchName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:fontFamily="@font/dmsansreg"
+                    android:gravity="start"
+                    android:padding="@dimen/_2sdp"
+                    android:text=""
+                    android:textColor="@color/light_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/dmsansreg"
+                    android:padding="@dimen/_2sdp"
+                    android:text="Brand"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_brand"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:fontFamily="@font/dmsansreg"
+                    android:gravity="start"
+                    android:padding="@dimen/_2sdp"
+                    android:text=""
+                    android:textColor="@color/light_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <!--            <androidx.appcompat.widget.LinearLayoutCompat-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_margin="@dimen/_4sdp"-->
+            <!--                android:orientation="horizontal">-->
+            <!--                <TextView-->
+            <!--                    android:layout_width="0dp"-->
+            <!--                    android:layout_weight=".4"-->
+            <!--                    android:padding="@dimen/_2sdp"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:textSize="12sp"-->
+            <!--                    android:textStyle="normal"-->
+            <!--                    android:textColor="@color/light_gray"-->
+            <!--                    android:text="Customer Name"/>-->
+
+            <!--                <TextView-->
+            <!--                    android:id="@+id/customerName"-->
+            <!--                    android:layout_width="0dp"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:textColor="@color/black"-->
+            <!--                    android:textSize="10sp"-->
+            <!--                    android:padding="@dimen/_2sdp"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:gravity="start"-->
+            <!--                    android:text="Customer Name"-->
+            <!--                    android:textStyle="bold"/>-->
+            <!--            </androidx.appcompat.widget.LinearLayoutCompat>-->
+            <!--            <androidx.appcompat.widget.LinearLayoutCompat-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_margin="@dimen/_4sdp"-->
+            <!--                android:orientation="horizontal">-->
+            <!--                <TextView-->
+
+            <!--                    android:layout_width="0dp"-->
+            <!--                    android:layout_weight=".4"-->
+            <!--                    android:padding="@dimen/_2sdp"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:textSize="12sp"-->
+            <!--                    android:textStyle="normal"-->
+            <!--                    android:textColor="@color/light_gray"-->
+            <!--                    android:text="Sub A/C. Name" />-->
+
+            <!--                <TextView-->
+            <!--                    android:id="@+id/subAccountName"-->
+            <!--                    android:layout_width="0dp"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:textColor="@color/black"-->
+            <!--                    android:textSize="10sp"-->
+            <!--                    android:padding="@dimen/_2sdp"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:gravity="start"-->
+            <!--                    android:text="Sub A/C. Name"-->
+            <!--                    android:textStyle="bold"/>-->
+            <!--            </androidx.appcompat.widget.LinearLayoutCompat>-->
+            <!--            <androidx.appcompat.widget.LinearLayoutCompat-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_margin="@dimen/_4sdp"-->
+            <!--                android:orientation="horizontal">-->
+            <!--                <TextView-->
+
+            <!--                    android:layout_width="0dp"-->
+            <!--                    android:layout_weight=".4"-->
+            <!--                    android:padding="@dimen/_2sdp"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:textSize="12sp"-->
+            <!--                    android:textStyle="normal"-->
+            <!--                    android:textColor="@color/light_gray"-->
+            <!--                    android:text="Branch Name" />-->
+
+            <!--                <TextView-->
+            <!--                    android:id="@+id/branchName"-->
+            <!--                    android:layout_width="0dp"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:textColor="@color/black"-->
+            <!--                    android:textSize="10sp"-->
+            <!--                    android:padding="@dimen/_2sdp"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:gravity="start"-->
+            <!--                    android:text="Branch Name"-->
+            <!--                    android:textStyle="bold"/>-->
+            <!--            </androidx.appcompat.widget.LinearLayoutCompat>-->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/dmsansreg"
+                    android:padding="@dimen/_2sdp"
+                    android:text="Sub A/C"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/subAccountName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:fontFamily="@font/dmsansreg"
+                    android:gravity="start"
+                    android:padding="@dimen/_2sdp"
+                    android:text=""
+                    android:textColor="@color/light_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/dmsansreg"
+                    android:padding="@dimen/_2sdp"
+                    android:text="Method"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_method"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:fontFamily="@font/dmsansreg"
+                    android:gravity="start"
+                    android:padding="@dimen/_2sdp"
+                    android:text=""
+                    android:textColor="@color/light_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/dmsansreg"
+                    android:padding="@dimen/_2sdp"
+                    android:text="GivenBy"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_givebBy"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:fontFamily="@font/dmsansreg"
+                    android:gravity="start"
+                    android:padding="@dimen/_2sdp"
+                    android:text=""
+                    android:textColor="@color/light_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/dmsansreg"
+                    android:padding="@dimen/_2sdp"
+                    android:text="Transport"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_transport"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:fontFamily="@font/dmsansreg"
+                    android:gravity="start"
+                    android:padding="@dimen/_2sdp"
+                    android:text=""
+                    android:textColor="@color/light_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/dmsansreg"
+                    android:padding="@dimen/_2sdp"
+                    android:text="Booking"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_booking"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:fontFamily="@font/dmsansreg"
+                    android:gravity="start"
+                    android:padding="@dimen/_2sdp"
+                    android:text=""
+                    android:textColor="@color/light_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/dmsansreg"
+                    android:padding="@dimen/_2sdp"
+                    android:text="Marka"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_marka"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:fontFamily="@font/dmsansreg"
+                    android:gravity="start"
+                    android:padding="@dimen/_2sdp"
+                    android:text=""
+                    android:textColor="@color/light_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/dmsansreg"
+                    android:padding="@dimen/_2sdp"
+                    android:text="Remark"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_remark"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:fontFamily="@font/dmsansreg"
+                    android:gravity="start"
+                    android:padding="@dimen/_2sdp"
+                    android:text=""
+                    android:textColor="@color/light_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/dmsansreg"
+                    android:padding="@dimen/_2sdp"
+                    android:text="Detail Remark"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_det_remark"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:fontFamily="@font/dmsansreg"
+                    android:gravity="start"
+                    android:padding="@dimen/_2sdp"
+                    android:text=""
+                    android:textColor="@color/light_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/dmsansreg"
+                    android:padding="@dimen/_2sdp"
+                    android:text="Billing Firm"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_billingFirm"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:fontFamily="@font/dmsansreg"
+                    android:gravity="start"
+                    android:padding="@dimen/_2sdp"
+                    android:text=""
+                    android:textColor="@color/light_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/dmsansreg"
+                    android:padding="@dimen/_2sdp"
+                    android:text="Shipping Firm"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_shippingFirm"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:fontFamily="@font/dmsansreg"
+                    android:gravity="start"
+                    android:padding="@dimen/_2sdp"
+                    android:text=""
+                    android:textColor="@color/light_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/dmsansreg"
+                    android:padding="@dimen/_2sdp"
+                    android:text="ORP"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_orp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:fontFamily="@font/dmsansreg"
+                    android:gravity="start"
+                    android:padding="@dimen/_2sdp"
+                    android:text=""
+                    android:textColor="@color/light_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/dmsansreg"
+                    android:padding="@dimen/_2sdp"
+                    android:text="IsBilling"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_isbilling"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:fontFamily="@font/dmsansreg"
+                    android:gravity="start"
+                    android:padding="@dimen/_2sdp"
+                    android:text=""
+                    android:textColor="@color/light_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/dmsansreg"
+                    android:padding="@dimen/_2sdp"
+                    android:text="Salesman"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_salesman"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:fontFamily="@font/dmsansreg"
+                    android:gravity="start"
+                    android:padding="@dimen/_2sdp"
+                    android:text="Salesman"
+                    android:textColor="@color/light_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/dmsansreg"
+                    android:padding="@dimen/_2sdp"
+                    android:text="IsComplete"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_iscomplete"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:fontFamily="@font/dmsansreg"
+                    android:gravity="start"
+                    android:padding="@dimen/_2sdp"
+                    android:text=""
+                    android:textColor="@color/light_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/dmsansreg"
+                    android:padding="@dimen/_2sdp"
+                    android:text="Billing"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_billing"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:fontFamily="@font/dmsansreg"
+                    android:gravity="start"
+                    android:padding="@dimen/_2sdp"
+                    android:text=""
+                    android:textColor="@color/light_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/dmsansreg"
+                    android:padding="@dimen/_2sdp"
+                    android:text="IsScheme"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_isScheme"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:fontFamily="@font/dmsansreg"
+                    android:gravity="start"
+                    android:padding="@dimen/_2sdp"
+                    android:text=""
+                    android:textColor="@color/light_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/dmsansreg"
+                    android:padding="@dimen/_2sdp"
+                    android:text="IsLoose"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_isLoose"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:fontFamily="@font/dmsansreg"
+                    android:gravity="start"
+                    android:padding="@dimen/_2sdp"
+                    android:text=""
+                    android:textColor="@color/light_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <!--                 <androidx.appcompat.widget.LinearLayoutCompat-->
+            <!--                     android:layout_width="match_parent"-->
+            <!--                     android:layout_height="wrap_content"-->
+            <!--                     android:layout_margin="@dimen/_4sdp"-->
+            <!--                     android:orientation="horizontal">-->
+            <!--                     <TextView-->
+
+            <!--                         android:layout_width="0dp"-->
+            <!--                         android:layout_weight=".4"-->
+            <!--                         android:padding="@dimen/_2sdp"-->
+            <!--                         android:layout_height="wrap_content"-->
+            <!--                         android:textSize="12sp"-->
+            <!--                         android:textStyle="normal"-->
+            <!--                         android:textColor="@color/light_gray"-->
+            <!--                         android:text="Pcs" />-->
+
+            <!--                     <TextView-->
+            <!--                         android:id="@+id/tv_Pcs"-->
+            <!--                         android:layout_width="0dp"-->
+            <!--                         android:layout_height="wrap_content"-->
+            <!--                         android:textColor="@color/black"-->
+            <!--                         android:textSize="10sp"-->
+            <!--                         android:padding="@dimen/_2sdp"-->
+            <!--                         android:layout_weight="1"-->
+            <!--                         android:gravity="start"-->
+            <!--                         android:text="Pcs"-->
+            <!--                         android:textStyle="bold"/>-->
+            <!--                 </androidx.appcompat.widget.LinearLayoutCompat>-->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/dmsansreg"
+                    android:padding="@dimen/_2sdp"
+                    android:text="Amt."
+                    android:textColor="@color/dark_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_amt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:fontFamily="@font/dmsansreg"
+                    android:gravity="start"
+                    android:padding="@dimen/_2sdp"
+                    android:text=""
+                    android:textColor="@color/light_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".4"
+                    android:fontFamily="@font/dmsansreg"
+                    android:padding="@dimen/_2sdp"
+                    android:text="Packing"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_Packing"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/dmsansreg"
+                    android:gravity="start"
+                    android:padding="@dimen/_2sdp"
+                    android:text="Packing"
+                    android:textColor="@color/light_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".4"
+                    android:fontFamily="@font/dmsansreg"
+                    android:padding="@dimen/_2sdp"
+                    android:text="Freight"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_freight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/dmsansreg"
+                    android:gravity="start"
+                    android:padding="@dimen/_2sdp"
+                    android:text="Freight"
+                    android:textColor="@color/light_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".4"
+                    android:fontFamily="@font/dmsansreg"
+                    android:padding="@dimen/_2sdp"
+                    android:text="Tax"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_tax"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/dmsansreg"
+                    android:gravity="start"
+                    android:padding="@dimen/_2sdp"
+                    android:text="Tax"
+                    android:textColor="@color/light_gray"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <!--                 <androidx.appcompat.widget.LinearLayoutCompat-->
+            <!--                     android:layout_width="match_parent"-->
+            <!--                     android:layout_height="wrap_content"-->
+            <!--                     android:layout_margin="@dimen/_4sdp"-->
+            <!--                     android:orientation="horizontal">-->
+            <!--                     <TextView-->
+
+            <!--                         android:layout_width="0dp"-->
+            <!--                         android:layout_weight=".4"-->
+            <!--                         android:padding="@dimen/_2sdp"-->
+            <!--                         android:layout_height="wrap_content"-->
+            <!--                         android:textSize="12sp"-->
+            <!--                         android:textStyle="normal"-->
+            <!--                         android:textColor="@color/light_gray"-->
+            <!--                         android:text="Total Amt." />-->
+
+            <!--                     <TextView-->
+            <!--                         android:id="@+id/tv_tt_amt"-->
+            <!--                         android:layout_width="0dp"-->
+            <!--                         android:layout_height="wrap_content"-->
+            <!--                         android:textColor="@color/black"-->
+            <!--                         android:textSize="10sp"-->
+            <!--                         android:padding="@dimen/_2sdp"-->
+            <!--                         android:layout_weight="1"-->
+            <!--                         android:gravity="start"-->
+            <!--                         android:text="Total Ammount"-->
+            <!--                         android:textStyle="bold"/>-->
+            <!--                 </androidx.appcompat.widget.LinearLayoutCompat>-->
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.cardview.widget.CardView>

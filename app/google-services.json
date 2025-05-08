@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "652681149155",
+    "firebase_url": "https://pushnotification-a9919.firebaseio.com",
+    "project_id": "pushnotification-a9919",
+    "storage_bucket": "pushnotification-a9919.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:652681149155:android:3c87a6d5548eb6b1bce3d6",
+        "android_client_info": {
+          "package_name": "com.app.jmd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "652681149155-tjtftehd08751v3h48n4q0238segguch.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLj2mJMR4Kn4RwuXSqMAKMbHwipXA9FNg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "652681149155-tjtftehd08751v3h48n4q0238segguch.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

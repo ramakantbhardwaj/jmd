@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="colorPrimary">#03405d</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="action_barColor">#BB3E03</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="red">#F40404</color>
+    <color name="blue">#00008B</color>
+    <color name="green">#FF03DAC5</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="orange">#FE4001</color>
+    <color name="blue_m">#00233F</color>
+    <color name="light_gray">#9b9b9c</color>
+    <color name="dark_gray">#433f3e</color>
+    <color name="app_main_color_bl">#BB3E03</color>
+    <color name="app_main_color_bl_new">#BB3E03</color>
+    <color name="border_view_color">#000000</color>
+    <color name="registrationBG">#E4E4E0</color>
+    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#d3d3d3</color>
+</resources>

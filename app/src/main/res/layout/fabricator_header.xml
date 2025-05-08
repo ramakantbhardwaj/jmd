@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        app:cardCornerRadius="@dimen/_2sdp"
+        app:cardElevation="@dimen/_8sdp"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_22sdp"
+            android:background="@color/app_main_color_bl"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:padding="@dimen/_4sdp">
+            <TextView
+                android:id="@+id/tv_slno"
+                android:layout_width="0dp"
+                android:layout_weight=".5"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:textStyle="bold"
+                android:text="Sl No"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"
+                android:fontFamily="@font/source_sans_pro_regular" />
+
+            <TextView
+                android:id="@+id/tv_vch_no"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:textStyle="bold"
+                android:text="Design"
+                android:visibility="visible"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"
+                android:fontFamily="sans-serif"/>
+
+
+
+            <TextView
+                android:id="@+id/tv_bill_no"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:textStyle="bold"
+                android:text="Size"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"
+                android:fontFamily="@font/source_sans_pro_regular" />
+
+            <TextView
+                android:id="@+id/tv_bill_date"
+                android:layout_width="0dp"
+                android:layout_weight=".6"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:textStyle="bold"
+                android:text="Colour"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"
+                android:fontFamily="@font/source_sans_pro_regular" />
+            <TextView
+                android:id="@+id/tv_book_type"
+                android:layout_width="0dp"
+                android:layout_weight=".5"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:textStyle="bold"
+                android:text="Qty"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"
+                android:fontFamily="@font/source_sans_pro_regular" />
+
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

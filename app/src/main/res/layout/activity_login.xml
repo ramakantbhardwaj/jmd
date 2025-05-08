@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rel_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.LoginActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_100sdp"
+        android:gravity="center"
+        android:orientation="vertical">
+        <ImageView
+            android:visibility="gone"
+            android:layout_width="@dimen/_140sdp"
+            android:layout_height="@dimen/_140sdp"
+            android:src="@drawable/app_icon"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_80sdp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_14sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/dmsansreg"
+                android:textColor="@color/black"
+                android:text="Enter Mobile No"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"/>
+            <EditText
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:fontFamily="@font/dmsansreg"
+                android:layout_height="60dp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:textColorHint="@color/black"
+                android:textColor="@color/black"
+                android:singleLine="true"
+                android:scrollHorizontally="true"
+                android:inputType="number"
+                android:background="@drawable/custom_edit_text_cut"
+                android:drawablePadding="12dp"
+                android:maxLength="10"
+                android:hint="Mobile No"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tblPhone"
+                android:visibility="visible"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:background="@color/white"
+                android:textColorHint="@color/black"
+                app:startIconDrawable="@drawable/baseline_person_outline_24"
+                app:boxStrokeColor="@color/black">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etMobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ems="2"
+                    android:fontFamily="@font/dmsansreg"
+                    android:hint="User Name"
+                    android:inputType="phone"
+                    android:maxLength="10"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/colorPrimary"
+                    app:backgroundTint="@color/black" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--User pass-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tblPass"
+                android:visibility="visible"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:background="@color/white"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@color/black"
+                app:passwordToggleEnabled="true"
+                app:startIconDrawable="@drawable/ic_pass">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPassword"
+                    style="@style/AppBaseTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ems="2"
+                    android:fontFamily="@font/source_sans_pro_regular"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:maxLength="10"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingLeft="@dimen/_10sdp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/colorPrimary"
+                    app:backgroundTint="@color/black" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_sign_in"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="@dimen/_25sdp"
+                android:backgroundTint="@color/app_main_color_bl"
+                android:fontFamily="@font/dmsansreg"
+                android:text="Login"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14ssp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

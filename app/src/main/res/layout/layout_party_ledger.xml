@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        app:cardElevation="@dimen/_8sdp"
+        app:cardBackgroundColor="@color/white"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/llledgerParty"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_22sdp"
+            android:padding="@dimen/_4sdp">
+            <TextView
+                android:id="@+id/tv_slno"
+                android:layout_width="0dp"
+                android:layout_weight=".5"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:text="Sl No"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"
+                android:fontFamily="@font/dmsansreg" />
+
+
+            <TextView
+                android:id="@+id/tv_vch_no"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:visibility="gone"
+                android:text="vch no"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"
+                android:fontFamily="sans-serif" />
+
+            <TextView
+                android:id="@+id/tv_vch_date"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="Date"
+                android:visibility="gone"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"
+                android:fontFamily="@font/dmsansreg" />
+
+            <TextView
+                android:id="@+id/tv_bill_no"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="Bill No"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"
+                android:fontFamily="@font/dmsansreg"/>
+
+            <TextView
+                android:id="@+id/tv_bill_date"
+                android:layout_width="0dp"
+                android:layout_weight="1.2"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="Date"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"
+                android:fontFamily="@font/dmsansreg" />
+            <TextView
+                android:id="@+id/tv_book_type"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="book type"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"
+                android:fontFamily="@font/dmsansreg"/>
+
+            <TextView
+                android:id="@+id/tv_debit"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="debit"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"
+                android:fontFamily="@font/dmsansreg" />
+
+            <TextView
+                android:id="@+id/tv_credit"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="credit"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"
+                android:fontFamily="@font/dmsansreg"/>
+
+            <TextView
+                android:id="@+id/tv_balance"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="balance"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"
+                android:fontFamily="@font/dmsansreg" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

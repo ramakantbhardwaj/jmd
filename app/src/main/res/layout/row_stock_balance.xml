@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        app:cardCornerRadius="@dimen/_2sdp"
+        app:cardElevation="@dimen/_8sdp"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/llsaleParty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_4sdp">
+
+            <TextView
+                android:id="@+id/tv_slno"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_gravity="center"
+                android:fontFamily="@font/dmsansreg"
+                android:text="SNo"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"/>
+
+            <View
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="@dimen/_30sdp"/>
+            <TextView
+                android:id="@+id/tv_partyName"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_gravity="center"
+                android:text="Supplier"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"
+                android:fontFamily="@font/dmsansreg" />
+            <View
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="@dimen/_30sdp"/>
+            <TextView
+                android:id="@+id/tv_issue"
+                android:layout_width="@dimen/_75sdp"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_gravity="center"
+                android:text="Supplier"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"
+                android:fontFamily="@font/dmsansreg" />
+            <View
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="@dimen/_30sdp"/>
+            <TextView
+                android:id="@+id/tv_vch_date"
+                android:layout_width="@dimen/_75sdp"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_gravity="center"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"
+                android:fontFamily="@font/dmsansreg" />
+            <View
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="@dimen/_30sdp"/>
+            <TextView
+                android:id="@+id/tv_designName"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_gravity="center"
+                android:text="Supplier"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"
+                android:fontFamily="@font/dmsansreg" />
+
+            <TextView
+                android:id="@+id/tv_size"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:gravity="start"
+                android:layout_gravity="center"
+                android:text="Pcs."
+                android:visibility="gone"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"
+                android:fontFamily="@font/dmsansreg"/>
+            <View
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="@dimen/_30sdp"/>
+            <TextView
+                android:id="@+id/tv_colours"
+                android:layout_width="@dimen/_75sdp"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:text="Item"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"
+                android:fontFamily="@font/dmsansreg"/>
+            <View
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="@dimen/_30sdp"/>
+
+            <TextView
+                android:id="@+id/tv_ballance"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:paddingEnd="@dimen/_10sdp"
+                android:text="Disc"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"
+                android:fontFamily="@font/dmsansreg"/>
+
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>

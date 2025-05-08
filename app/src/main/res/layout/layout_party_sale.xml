@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginTop="@dimen/_1sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        app:cardCornerRadius="@dimen/_2sdp"
+        app:cardElevation="@dimen/_8sdp"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/llsaleParty"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_22sdp"
+            android:background="@color/app_main_color_bl"
+            android:padding="@dimen/_4sdp">
+
+            <TextView
+                android:id="@+id/tv_slno"
+                android:layout_width="0dp"
+                android:layout_weight=".5"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:text="Sl No"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_11sdp"
+                android:fontFamily="@font/dmsansreg" />
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/tv_remark"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="remark"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_11sdp"
+                android:fontFamily="@font/dmsansreg" />
+
+            <TextView
+                android:id="@+id/tv_vch_no"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="Bill No."
+                android:textColor="@color/white"
+                android:textSize="@dimen/_11sdp"
+                android:fontFamily="@font/dmsansreg" />
+
+            <TextView
+                android:id="@+id/tv_vch_date"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="Date"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_11sdp"
+                android:fontFamily="@font/dmsansreg" />
+
+            <TextView
+                android:id="@+id/tv_tt_qty"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="Total Qty"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_11sdp"
+                android:fontFamily="@font/dmsansreg"/>
+            <TextView
+                android:id="@+id/tv_tt_amt"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="Amount"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_11sdp"
+                android:fontFamily="@font/dmsansreg"/>
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
