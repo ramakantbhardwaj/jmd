@@ -126,7 +126,9 @@ public class AdapterFabricator extends RecyclerView.Adapter<AdapterFabricator.Fa
         Log.d("imaggege", imageUrl);
         Glide.with(context)
                 .load(imageUrl)
-                .placeholder(R.drawable.dum_img) // Dummy image while loading
+                .placeholder(R.drawable.dum_img)
+                .override(200, 200) // fixed width & height in pixels
+                .centerCrop()// Dummy image while loading
                 .error(R.drawable.dum_img) // Dummy image if there's an error
                 .into(holder.imageDesign);
 //        holder.itemView.setOnClickListener(new View.OnClickListener() {
