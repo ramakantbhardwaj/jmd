@@ -12,7 +12,12 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.AbsoluteSizeSpan;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +33,7 @@ import android.widget.Toast;
 import com.app.jmd.AppPrefrences;
 import com.app.jmd.R;
 import com.app.jmd.adapterS.AdapterFabricator;
+import com.app.jmd.adapterS.AdapterSearchableFabIssue;
 import com.app.jmd.adapterS.FabricUDataAdapter;
 import com.app.jmd.adapterS.FilterFabricatorAdapter;
 import com.app.jmd.adapterS.GoDownFilterAdapter;
@@ -37,6 +43,7 @@ import com.app.jmd.interfaces.FilterSpinner;
 import com.app.jmd.interfaces.GetLotNoList;
 import com.app.jmd.interfaces.MyItemClickListener;
 import com.app.jmd.interfaces.UpdateQtyInterface;
+import com.app.jmd.mode.CommonModel;
 import com.app.jmd.mode.FabicatorModel;
 import com.app.jmd.mode.GetUniqueLotModel;
 import com.app.jmd.mode.GoDownModel;
@@ -75,6 +82,7 @@ public class FabricatorIssueActivity extends AppCompatActivity implements View.O
     Call<GetUniqueLotModel> getUniqueLotModelCall;
     //    FabicatorModel fabicatorModel;
     FabricUDataAdapter fabricUDataAdapter;
+    CommonModel commonModel;
     GetUniqueLotModel getUniqueLotModel;
     Context context;
     TextView tv_header;
@@ -82,15 +90,18 @@ public class FabricatorIssueActivity extends AppCompatActivity implements View.O
     String lotNo = "";
     LinearLayout ll_ledger_report;
     FilterFabricatorAdapter filterFabricatorAdapter;
-    TextView tv_fabric_name, tv_master_name, tv_godown_name;
-    RelativeLayout relaLayoutFabricr, relaLayoutMaster, relaLayoutGodown;
+    AdapterSearchableFabIssue adapterSearchableFabIssue;
+    TextView tv_fabric_name, tv_master_name, tv_godown_name,tv_lot_pending,tv_fab_search;
+    RelativeLayout relaLayoutFabricr,relaLayoutFabSearch, relaLayoutMaster, relaLayoutGodown;
     String customerCode = "";
     String customerName = "";
     String masterCode = "";
+    String designNameSearchable = "";
     String masterName = "";
     String goDownCode = "";
     String goDownName = "", currentDate, myjson, strRemark;
     List<LstParty> customerPartyList = new ArrayList<>();
+    List<LstlotUnique> designNameFabList = new ArrayList<>();
     List<LstParty> masterPartyList = new ArrayList<>();
     List<LstParty> masterPartyListSpecfic = new ArrayList<>();
     List<LstGodown> goDownPartyList = new ArrayList<>();
@@ -110,12 +121,12 @@ public class FabricatorIssueActivity extends AppCompatActivity implements View.O
     int posit;
     private List<FabicatorModel> fabicatorModels;
     ArrayList<String> arrayListLots = new ArrayList<>();
-    SearchView searchViewFabri;
+//    SearchView searchViewFabri;
     ArrayList<LstlotUnique> newListSaveCheced;
-    String searchQuery;
     boolean isLoading = false;
     int currentPage = 1;
     private boolean hasLoadedApi = false;
+    String pendingLotValue="";
 
 
     @Override
@@ -124,14 +135,17 @@ public class FabricatorIssueActivity extends AppCompatActivity implements View.O
         setContentView(R.layout.activity_fabricator_issue);
         context = FabricatorIssueActivity.this;
         tv_fabric_name = findViewById(R.id.tv_fabric_name);
+        tv_fab_search = findViewById(R.id.tv_fab_search);
+        tv_lot_pending = findViewById(R.id.tv_lot_pending);
         tv_master_name = findViewById(R.id.tv_master_name);
         tv_godown_name = findViewById(R.id.tv_godown_name);
         btn_upload = findViewById(R.id.btn_upload);
         relaLayoutGodown = findViewById(R.id.relaLayoutGodown);
         relaLayoutFabricr = findViewById(R.id.relaLayoutFabricr);
+        relaLayoutFabSearch = findViewById(R.id.relaLayoutFabSearch);
         relaLayoutMaster = findViewById(R.id.relaLayoutMaster);
         etRemakr = findViewById(R.id.etRemakr);
-        searchViewFabri = findViewById(R.id.searchViewFabri);
+//        searchViewFabri = findViewById(R.id.searchViewFabri);
         tv_header = findViewById(R.id.tv_header);
         ll_ledger_report = findViewById(R.id.ll_ledger_report);
         iv_back = findViewById(R.id.iv_back);
@@ -142,9 +156,9 @@ public class FabricatorIssueActivity extends AppCompatActivity implements View.O
         btn_upload.setOnClickListener(this);
         progressDialog = new ProgressDialog(this);
         currentDate = getCurrentDate();
-        searchViewFabri.setQueryHint("Search By Design No");
-        searchViewFabri.setIconified(false);
-        searchViewFabri.clearFocus();
+//        searchViewFabri.setQueryHint("Search By Design No");
+//        searchViewFabri.setIconified(false);
+//        searchViewFabri.clearFocus();
 
 
         iv_back.setOnClickListener(new View.OnClickListener() {
@@ -157,52 +171,40 @@ public class FabricatorIssueActivity extends AppCompatActivity implements View.O
         });
 
 //        showAllLedgerPartyData("", "");
-        if (!hasLoadedApi) {
-            hasLoadedApi = true;
+
             showAllLedgerPartyData("", "");
-        }
-
-        rv_fabricator.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
-                if (!isLoading && layoutManager != null && layoutManager.findLastVisibleItemPosition() == getUniqueLotModel.getLstlot().size() - 1) {
-                    isLoading = true;
-                    // Trigger pagination here (e.g., fetch next page)
-                    showAllLedgerPartyData("", ""); // 👈 only call when needed
-                }
-            }
-        });
-
-
-        searchViewFabri.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                 searchQuery= query.toUpperCase();
-                showAllLedgerPartyData(searchQuery, "");
-                AppPrefrences.getInstance(FabricatorIssueActivity.this).removeFromPref("save_checedbox");
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
-            }
-        });
-        ImageView closeButton = searchViewFabri.findViewById(R.id.search_close_btn);
-        closeButton.setOnClickListener(v -> {
-            // Clear the text
-            searchViewFabri.setQuery("", false);
-
-            // Optionally clear focus
-            searchViewFabri.clearFocus();
-            showAllLedgerPartyData("", "");
-            AppPrefrences.getInstance(FabricatorIssueActivity.this).removeFromPref("save_checedbox");
 
 
 
-            // 👉 Now hit your API or reset the list
-        });
+
+//        searchViewFabri.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                 searchQuery= query.toUpperCase();
+//                showAllLedgerPartyData(searchQuery, "");
+//                AppPrefrences.getInstance(FabricatorIssueActivity.this).removeFromPref("save_checedbox");
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                return false;
+//            }
+//        });
+//        ImageView closeButton = searchViewFabri.findViewById(R.id.search_close_btn);
+//        closeButton.setOnClickListener(v -> {
+//            // Clear the text
+//            searchViewFabri.setQuery("", false);
+//
+//            // Optionally clear focus
+//            searchViewFabri.clearFocus();
+//            showAllLedgerPartyData("", "");
+//            AppPrefrences.getInstance(FabricatorIssueActivity.this).removeFromPref("save_checedbox");
+//
+//
+//
+//            // 👉 Now hit your API or reset the list
+//        });
         showAllFabList();
         showAllMasterList();
         showAllGoDownList();
@@ -252,6 +254,59 @@ public class FabricatorIssueActivity extends AppCompatActivity implements View.O
                         customerCode = "";
                         customerName = "Select Fabricator";
                         tv_fabric_name.setText(customerName);
+                        dialog.dismiss();
+                    }
+                });
+                alertDialog = builder.create();
+                alertDialog.show();
+            }
+        });
+        relaLayoutFabSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(FabricatorIssueActivity.this);
+                builder.setTitle("Search Design Name");
+                LayoutInflater inflater = getLayoutInflater();
+                View convertView = inflater.inflate(R.layout.alert_dialog_spinner_filter_layout, null);
+                builder.setView(convertView);
+                SearchView searchView = convertView.findViewById(R.id.searchView);
+                searchView.setIconifiedByDefault(false);
+                RecyclerView list = convertView.findViewById(R.id.recyclerViewCity);
+                searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                    @Override
+                    public boolean onQueryTextSubmit(String query) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onQueryTextChange(String newText) {
+                        adapterSearchableFabIssue.getFilter().filter(newText);
+                        return false;
+                    }
+                });
+                list.setLayoutManager(new LinearLayoutManager(context));
+                list.setHasFixedSize(true);
+                adapterSearchableFabIssue = new AdapterSearchableFabIssue(designNameFabList, context);
+                LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+                list.setLayoutManager(layoutManager);
+                DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(list.getContext(),
+                        layoutManager.getOrientation());
+                list.addItemDecoration(dividerItemDecoration);
+                list.setAdapter(adapterSearchableFabIssue);
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        adapterSearchableFabIssue.getFilter().filter("");
+                        dialog.dismiss();
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        adapterSearchableFabIssue.getFilter().filter("");
+                        customerCode = "";
+                        designNameSearchable = "Search Design Name";
+                        tv_fab_search.setText(designNameSearchable);
                         dialog.dismiss();
                     }
                 });
@@ -433,6 +488,27 @@ public class FabricatorIssueActivity extends AppCompatActivity implements View.O
                         rv_fabricator.setLayoutManager(linearLayoutManager);
                         fabricUDataAdapter = new FabricUDataAdapter(getUniqueLotModel, FabricatorIssueActivity.this);
                         rv_fabricator.setAdapter(fabricUDataAdapter);
+                        int totalQty=0;
+                        for (int i=0; i<getUniqueLotModel.getLstlot().size();i++){
+
+                            String qty="";
+                            qty= getUniqueLotModel.getLstlot().get(i).getQty();
+                            if (qty != null && !qty.isEmpty()) {
+                                try {
+                                    int qtyN = Integer.parseInt(qty);
+                                    totalQty += qtyN;
+                                } catch (NumberFormatException e) {
+                                    e.printStackTrace(); // Log or handle invalid number format
+                                }
+                            }
+                        }
+                        tv_header.setText("Fabricator Issue"+"("+getUniqueLotModel.getLstlot().size()+"/"+totalQty+")");
+
+//                        customerPartyList.addAll(masterMainModel.getLstParty());
+                        designNameFabList.addAll(getUniqueLotModel.getLstlot());
+
+
+
 
 
 //                        addList.add(new LstEmbDetail("",fabicatorModel.getLstlot().get(posit).getDesigncode()
@@ -505,6 +581,88 @@ public class FabricatorIssueActivity extends AppCompatActivity implements View.O
             Toast.makeText(FabricatorIssueActivity.this, "" + exception.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
+    private void showAllDesignNameFabList() {
+
+        try {
+            api_interface = APIClient.getService();
+            Call<MasterMainModel> call = api_interface.getMasterData("03", "");
+            progressDialog.show();
+            call.enqueue(new Callback<MasterMainModel>() {
+                @Override
+                public void onResponse(@NonNull Call<MasterMainModel> call, @NonNull Response<MasterMainModel> response) {
+
+                    assert response.body() != null;
+                    boolean status = response.body().getStatus();
+                    String msg = response.body().getMessage();
+                    masterMainModel = response.body();
+
+                    if (status && masterMainModel.getLstParty() != null) {
+                        customerPartyList.clear();
+                        customerPartyList.addAll(masterMainModel.getLstParty());
+                        progressDialog.dismiss();
+                    } else {
+                        progressDialog.dismiss();
+                    }
+                }
+
+                @Override
+                public void onFailure(@NonNull Call<MasterMainModel> call, @NonNull Throwable t) {
+                    progressDialog.dismiss();
+//                    spn_master.setAdapter(null);
+                    Toast.makeText(FabricatorIssueActivity.this, "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        } catch (Exception exception) {
+            Toast.makeText(FabricatorIssueActivity.this, "" + exception.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+    private void showPendingLots(String prtyCode) {
+
+        try {
+            api_interface = APIClient.getService();
+            Call<CommonModel> call = api_interface.getPendingLots(prtyCode);
+            progressDialog.show();
+            call.enqueue(new Callback<CommonModel>() {
+                @Override
+                public void onResponse(@NonNull Call<CommonModel> call, @NonNull Response<CommonModel> response) {
+
+                    assert response.body() != null;
+                    boolean status = response.body().getStatus();
+
+                    commonModel = response.body();
+
+                    if (status) {
+                        String msg = response.body().getMessage();
+                        String[] parts = msg.split(":");
+
+                        if (parts.length > 1) {
+                             pendingLotValue = parts[1].trim();
+                            tv_lot_pending.setText("Lots:"+pendingLotValue);
+
+//                             tv_fabric_name.setText(customerName+"(Pending Lots: "+pendingLotValue+")");
+
+                        }
+
+                        progressDialog.dismiss();
+                    } else {
+                        progressDialog.dismiss();
+                    }
+                }
+
+                @Override
+                public void onFailure(@NonNull Call<CommonModel> call, @NonNull Throwable t) {
+                    progressDialog.dismiss();
+//                    spn_master.setAdapter(null);
+                    Toast.makeText(FabricatorIssueActivity.this, "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        } catch (Exception exception) {
+            Toast.makeText(FabricatorIssueActivity.this, "" + exception.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
     private void showAllMasterList() {
 
@@ -564,7 +722,7 @@ public class FabricatorIssueActivity extends AppCompatActivity implements View.O
 
                         tv_master_name.setText(masterMainModel.getLstParty().get(0).getPartyname());
                         masterCode = masterMainModel.getLstParty().get(0).getPartycode();
-                        showAllLedgerPartyData(searchQuery, masterMainModel.getLstParty().get(0).getPartycode());
+                        showAllLedgerPartyData(designNameSearchable, masterMainModel.getLstParty().get(0).getPartycode());
 
                         progressDialog.dismiss();
                     } else {
@@ -768,11 +926,10 @@ public class FabricatorIssueActivity extends AppCompatActivity implements View.O
         if (partyCode.length() > 0) {
             customerCode = partyCode;
             customerName = partyName;
+            showPendingLots(customerCode);
             filterFabricatorAdapter.getFilter().filter("");
+            tv_fabric_name.setText(customerName);
             alertDialog.dismiss();
-            tv_fabric_name.setText(partyName);
-
-
         }
 
 
@@ -795,6 +952,16 @@ public class FabricatorIssueActivity extends AppCompatActivity implements View.O
 
     @Override
     public void sizeFilter(String partyCode, String partyName) {
+        if (partyCode.length() > 0) {
+//            masterCode = partyCode;
+            designNameSearchable = partyName;
+            adapterSearchableFabIssue.getFilter().filter("");
+            alertDialog.dismiss();
+//            tv_master_name.setText(partyName);
+            showAllLedgerPartyData(designNameSearchable, "");
+//            btn_upload.setVisibility(View.GONE);
+
+        }
 
     }
 

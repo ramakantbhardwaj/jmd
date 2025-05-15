@@ -39,15 +39,29 @@
 
                 <TextView
                     android:id="@+id/tv_fabric_name"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_alignParentStart="true"
                     android:fontFamily="sans-serif"
                     android:gravity="center_vertical"
                     android:paddingStart="@dimen/_10sdp"
-                    android:text="Select Fabicator"
+                    android:text="Select Fabricator"
+                    tools:ignore="HardcodedText,RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/tv_lot_pending"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_toLeftOf="@id/iv_arrow"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:fontFamily="sans-serif"
+                    android:textSize="@dimen/_18sdp"
+                    android:textColor="@color/app_main_color_bl"
+                    android:gravity="center_vertical"
+                    android:text=""
                     tools:ignore="HardcodedText,RtlSymmetry" />
                 <ImageView
+                    android:id="@+id/iv_arrow"
                     android:layout_width="@dimen/_40sdp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -182,13 +196,33 @@
             android:layout_weight="1"
             android:layout_gravity="center"
             android:layout_height="@dimen/_35sdp">
-            <androidx.appcompat.widget.SearchView
-                android:id="@+id/searchViewFabri"
-                android:background="@drawable/custom_edit_text_cut"
+            <RelativeLayout
+                android:id="@+id/relaLayoutFabSearch"
                 android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_4sdp"
-                android:layout_height="wrap_content"
-                android:queryHint="Search by Design" />
+                android:background="@drawable/bg_border"
+                android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_fab_search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:fontFamily="sans-serif"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/_10sdp"
+                android:text="Search Design Name"
+                tools:ignore="HardcodedText,RtlSymmetry" />
+            </RelativeLayout>
+<!--            <androidx.appcompat.widget.SearchView-->
+<!--                android:id="@+id/searchViewFabri"-->
+<!--                android:background="@drawable/custom_edit_text_cut"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_marginEnd="@dimen/_4sdp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:queryHint="Search by Design" />-->
 
 
         </LinearLayout>

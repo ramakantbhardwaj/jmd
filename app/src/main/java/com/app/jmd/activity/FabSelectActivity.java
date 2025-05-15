@@ -107,7 +107,6 @@ public class FabSelectActivity extends AppCompatActivity implements View.OnClick
     SaveFabCustomModel saveFabCustomModel = new SaveFabCustomModel();
     List<LstEmbDetail> addList = new ArrayList<>();
     List<LstEmbDetailUpdated> addListUpdated = new ArrayList<>();
-    private List<FabicatorModel> fabicatorModels;
     private boolean isSelectionControlled = false;
     String qty="";
     int pos;
@@ -394,6 +393,8 @@ public class FabSelectActivity extends AppCompatActivity implements View.OnClick
                         rv_fabricator.setLayoutManager(linearLayoutManager);
                         adapterFabricator = new AdapterFabricator(addList, FabSelectActivity.this,true);
                         rv_fabricator.setAdapter(adapterFabricator);
+//                        tv_header.setText("Fabricator Issue"+"("+fabicatorModel.getLstlot().size()+")");
+
                         for (int i=0;i<fabicatorModel.getLstlot().size();i++){
                       addList.add(new LstEmbDetail(
                               "",

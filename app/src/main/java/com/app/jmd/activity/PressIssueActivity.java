@@ -32,6 +32,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.app.jmd.AppPrefrences;
 import com.app.jmd.R;
 import com.app.jmd.adapterS.AdapterFabricator;
+import com.app.jmd.adapterS.AdapterSearchableFabIssue;
+import com.app.jmd.adapterS.AdapterSearchablePressIssue;
 import com.app.jmd.adapterS.FabricUDataAdapter;
 import com.app.jmd.adapterS.FilterFabricatorAdapter;
 import com.app.jmd.adapterS.GoDownFilterAdapter;
@@ -49,6 +51,7 @@ import com.app.jmd.mode.LstEmbDetail;
 import com.app.jmd.mode.LstGodown;
 import com.app.jmd.mode.LstParty;
 import com.app.jmd.mode.Lstlot;
+import com.app.jmd.mode.LstlotUnique;
 import com.app.jmd.mode.MasterMainModel;
 import com.app.jmd.mode.SaveFabModel;
 import com.app.jmd.mode.SubmitDataProductionModel;
@@ -84,12 +87,13 @@ public class PressIssueActivity extends AppCompatActivity implements View.OnClic
     LinearLayout ll_ledger_report;
     FilterFabricatorAdapter filterFabricatorAdapter;
     TextView tv_fabric_name,tv_master_name,tv_godown_name;
-    RelativeLayout relaLayoutFabricr,relaLayoutMaster,relaLayoutGodown;
+    RelativeLayout relaLayoutFabricr,relaLayoutMaster,relaLayoutGodown,relaLayoutFabSearch;
     String customerCode="";
     String customerName="";
     String masterCode="";
     String masterName="";
     String goDownCode="";
+    String designNameSearchable="";
     String goDownName="", currentDate,myjson,strRemark;
     List<LstParty> customerPartyList = new ArrayList<>();
     List<LstParty> masterPartyList = new ArrayList<>();
@@ -110,10 +114,14 @@ public class PressIssueActivity extends AppCompatActivity implements View.OnClic
     int posit;
     private List<FabicatorModel> fabicatorModels;
     Call<GetUniqueLotModelsPress> getUniqueLotModelsPressCall;
+    List<Lstlot> designNameFabList = new ArrayList<>();
+
     GetUniqueLotModelsPress getUniqueLotModelsPress;
     PressUAdapter pressUAdapter;
     ArrayList<String> arrayListLots= new ArrayList<>();
-    SearchView searchView;
+    AdapterSearchablePressIssue adapterSearchablePressIssue;
+    TextView tv_fab_search;
+
 
 
 
@@ -121,14 +129,15 @@ public class PressIssueActivity extends AppCompatActivity implements View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_press_issue);
-
         context= PressIssueActivity.this;
         context= PressIssueActivity.this;
         tv_fabric_name = findViewById(R.id.tv_fabric_name);
         tv_master_name = findViewById(R.id.tv_master_name);
         tv_godown_name = findViewById(R.id.tv_godown_name);
+        tv_fab_search = findViewById(R.id.tv_fab_search);
         btn_upload = findViewById(R.id.btn_upload);
         relaLayoutGodown = findViewById(R.id.relaLayoutGodown);
+        relaLayoutFabSearch = findViewById(R.id.relaLayoutFabSearch);
         relaLayoutFabricr = findViewById(R.id.relaLayoutFabricr);
         relaLayoutMaster = findViewById(R.id.relaLayoutMaster);
         etRemakr = findViewById(R.id.etRemakr);
@@ -136,7 +145,6 @@ public class PressIssueActivity extends AppCompatActivity implements View.OnClic
         ll_ledger_report = findViewById(R.id.ll_ledger_report);
         iv_back = findViewById(R.id.iv_back);
         rv_fabricator = findViewById(R.id.rv_fabricator);
-        searchView = findViewById(R.id.searchView);
         tv_header.setVisibility(View.VISIBLE);
         iv_back.setVisibility(View.VISIBLE);
         tv_header.setText("Press Issue");
@@ -156,34 +164,7 @@ public class PressIssueActivity extends AppCompatActivity implements View.OnClic
         showAllMasterList();
         showAllGoDownList();
 //        showAllLedgerPartyData(lotNo,"");
-        searchView.setIconified(false);
-        searchView.setQueryHint("Search By Design No");
-        searchView.clearFocus();
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                String searchQuery=query.toUpperCase();
-                showAllLedgerPartyData(searchQuery,"");
-                return false;
-            }
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
-            }
-        });
-        ImageView closeButton = searchView.findViewById(R.id.search_close_btn);
-        closeButton.setOnClickListener(v -> {
-            // Clear the text
-            searchView.setQuery("", false);
-
-            // Optionally clear focus
-            searchView.clearFocus();
-            showAllLedgerPartyData("","");
-
-
-            // 👉 Now hit your API or reset the list
-        });
         relaLayoutFabricr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -288,6 +269,60 @@ public class PressIssueActivity extends AppCompatActivity implements View.OnClic
                 alertDialog.show();
             }
         });
+        relaLayoutFabSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(PressIssueActivity.this);
+                builder.setTitle("Search Design Name");
+                LayoutInflater inflater = getLayoutInflater();
+                View convertView = inflater.inflate(R.layout.alert_dialog_spinner_filter_layout, null);
+                builder.setView(convertView);
+                SearchView searchView = convertView.findViewById(R.id.searchView);
+                searchView.setIconifiedByDefault(false);
+                RecyclerView list = convertView.findViewById(R.id.recyclerViewCity);
+                searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                    @Override
+                    public boolean onQueryTextSubmit(String query) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onQueryTextChange(String newText) {
+                        adapterSearchablePressIssue.getFilter().filter(newText);
+                        return false;
+                    }
+                });
+                list.setLayoutManager(new LinearLayoutManager(context));
+                list.setHasFixedSize(true);
+                adapterSearchablePressIssue = new AdapterSearchablePressIssue(designNameFabList, context);
+                LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+                list.setLayoutManager(layoutManager);
+                DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(list.getContext(),
+                        layoutManager.getOrientation());
+                list.addItemDecoration(dividerItemDecoration);
+                list.setAdapter(adapterSearchablePressIssue);
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        adapterSearchablePressIssue.getFilter().filter("");
+                        dialog.dismiss();
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        adapterSearchablePressIssue.getFilter().filter("");
+                        customerCode = "";
+                        designNameSearchable = "Search Design Name";
+                        tv_fab_search.setText(designNameSearchable);
+                        dialog.dismiss();
+                    }
+                });
+                alertDialog = builder.create();
+                alertDialog.show();
+            }
+        });
+
         relaLayoutGodown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -399,6 +434,8 @@ public class PressIssueActivity extends AppCompatActivity implements View.OnClic
                         rv_fabricator.setLayoutManager(linearLayoutManager);
                         pressUAdapter = new PressUAdapter(getUniqueLotModelsPress, PressIssueActivity.this,false);
                         rv_fabricator.setAdapter(pressUAdapter);
+                        designNameFabList.addAll(getUniqueLotModelsPress.getLstlot());
+
 
                         pd.dismiss();
                         ll_ledger_report.setVisibility(View.VISIBLE);
@@ -682,11 +719,7 @@ public class PressIssueActivity extends AppCompatActivity implements View.OnClic
             filterFabricatorAdapter.getFilter().filter("");
             alertDialog.dismiss();
             tv_fabric_name.setText(partyName);
-
-
         }
-
-
     }
 
     @Override
@@ -706,6 +739,16 @@ public class PressIssueActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void sizeFilter(String partyCode, String partyName) {
+        if (partyCode.length() > 0) {
+//            masterCode = partyCode;
+            designNameSearchable = partyName;
+            adapterSearchablePressIssue.getFilter().filter("");
+            alertDialog.dismiss();
+            tv_fab_search.setText(partyName);
+            showAllLedgerPartyData(designNameSearchable,"");
+//            btn_upload.setVisibility(View.GONE);
+
+        }
 
     }
 

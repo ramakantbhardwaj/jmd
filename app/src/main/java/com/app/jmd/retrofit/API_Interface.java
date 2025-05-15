@@ -1,5 +1,6 @@
 package com.app.jmd.retrofit;
 import com.app.jmd.mode.BalanceStockMainModel;
+import com.app.jmd.mode.CommonModel;
 import com.app.jmd.mode.DataMainModel;
 import com.app.jmd.mode.DesignDataModel;
 import com.app.jmd.mode.DesignDetailsMainModel;
@@ -97,6 +98,11 @@ public interface API_Interface {
     @FormUrlEncoded
     @POST("Production/GetLotDetailForFabric")
     Call<FabicatorModel> getFabricatorIssue(@Field("LOTNO") String LOTNO,@Field("partycode") String partycode);
+
+
+    @FormUrlEncoded
+    @POST("Production/getPendingLots")
+    Call<CommonModel> getPendingLots(@Field("partycode") String partycode);
 
     @FormUrlEncoded
     @POST("Production/GetLotDetailForPress")

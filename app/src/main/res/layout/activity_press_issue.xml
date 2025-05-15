@@ -174,13 +174,27 @@
             android:layout_weight="1"
             android:layout_gravity="center"
             android:layout_height="@dimen/_35sdp">
-            <androidx.appcompat.widget.SearchView
-                android:id="@+id/searchView"
-                android:background="@drawable/custom_edit_text_cut"
+            <RelativeLayout
+                android:id="@+id/relaLayoutFabSearch"
                 android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_4sdp"
-                android:layout_height="wrap_content"
-                android:queryHint="Search by Design" />
+                android:background="@drawable/bg_border"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tv_fab_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:fontFamily="sans-serif"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:text="Search Design Name"
+                    tools:ignore="HardcodedText,RtlSymmetry" />
+            </RelativeLayout>
+
 
 
         </LinearLayout>

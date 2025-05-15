@@ -12,6 +12,18 @@ public class LstDesign {
     @Expose
     private String designname;
 
+    public String getDesignpath() {
+        return designpath;
+    }
+
+    public void setDesignpath(String designpath) {
+        this.designpath = designpath;
+    }
+
+    @SerializedName("designpath")
+    @Expose
+    private String designpath;
+
     public String getDesigncode() {
         return designcode;
     }
